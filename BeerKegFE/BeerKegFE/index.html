@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Beer Buds</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />
+    <script src="app.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.js"></script>
+</head>
+<body>
+    <h1>Beer Buds</h1>
+
+    <div id="greeter"></div>
+    <div id="content">
+        <form method="post" enctype="multipart/form-data" action="http://192.168.1.127:1234/testupload">
+            Submit your BeerBuzz:<input type="file" id="beerBuzzClip"><br>
+            <button name="fileSubmit" onclick="BeerBuzz.BuzzAjax.prototype.submitBuzz()">Submit File Remotely</button>
+            <input name="fileSubmit" type="submit" >
+        </form>
+    </div>
+</body>
+</html>
