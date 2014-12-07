@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,7 +15,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BeerBuzzBackend
 {
@@ -22,6 +23,15 @@ namespace BeerBuzzBackend
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        // File Store
+        public const string RootDir = @"C:/BeerBuzz/";
+        public string BuzzFileStoreDir = Path.Combine(RootDir, "BuzzFiles");
+        public string BuzzInfoStoreFilename = Path.Combine(RootDir, "BuzzFileInfoStore.txt");
+
+        public ObservableCollection<string> BuzzList = new ObservableCollection<string>();
+
+        public Dictionary<string, BuzzInfo> BuzzInfos;
+
         // Web Server
         WebServer webServer = new WebServer();
         CancellationToken cancelToken = new CancellationToken();

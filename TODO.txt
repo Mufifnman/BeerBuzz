@@ -1,0 +1,6 @@
+
+TODO for first MVP:
+ -- Clean-up Backend from ASP.net sample
+ -- Redo all Kevin's hard work
+ -- make client management client
+ -- Make client side not a test service(http://jsfiddle.net/dy57wocw/12/)

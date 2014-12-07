@@ -30,8 +30,19 @@ namespace BeerBuzzBackend
                     var listener = (HttpListener)callback.AsyncState;
                     if(!listener.IsListening) return;
 
-                    var httpContext = listener.EndGetContext(callback);
+                    HttpListenerContext httpContext = listener.EndGetContext(callback);
                     // handle the request in httpContext, some requests can take some time to complete
+
+                    var httpRequest = httpContext.Request;
+
+                    foreach (string file in httpRequest.Files)
+                    {
+                        var postedFile = httpRequest.Files[file];
+
+                        var filePath = HttpContext.Current.Server.MapPath("~/" + postedFile.FileName);
+
+                        postedFile.SaveAs(filePath);
+                    }
 
                 }, httpListener);
 
